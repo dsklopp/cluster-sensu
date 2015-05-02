@@ -1,0 +1,11 @@
+{
+  "name": "sensu",
+  "chef_type": "node",
+  "json_class": "Chef::Node",
+  "chef_environment": "_default",
+  "run_list": [],
+  "automatic": {
+    "ipaddress": "192.168.12.43",
+    "hostname": "sensu"
+  }
+}

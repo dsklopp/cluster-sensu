@@ -1,0 +1,74 @@
+---
+driver:
+  name: vagrant
+  customize:
+    memory: 768
+
+provisioner:
+  name: chef_zero
+  nodes_path: test/nodes
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: router
+    driver:
+      network:
+        - ["private_network", {ip: "192.168.12.99"}]
+    run_list:
+      - recipe[apt::default]
+      - recipe[guru-sensu::router]
+      - recipe[guru-sensu::sensu-client]
+    attributes:
+  - name: redis
+    driver:
+      network:
+        - ["private_network", {ip: "192.168.12.41"}]
+    run_list:
+      - recipe[apt::default]
+      - recipe[guru-sensu::redis]
+      - recipe[guru-sensu::sensu-client]
+    attributes:
+      remotes:
+        routers: 
+          ips: [ '192.168.12.99' ]
+  - name: rabbitmq
+    driver:
+      network:
+        - ["private_network", {ip: "192.168.12.42"}]
+    run_list:
+      - recipe[apt::default]
+      - recipe[guru-sensu::rabbitmq]
+      - recipe[guru-sensu::sensu-client]
+    attributes:
+      remotes:
+        routers: 
+          ips: [ '192.168.12.99' ]
+  - name: rabbitmq2
+    driver:
+      network:
+        - ["private_network", {ip: "192.168.12.44"}]
+    run_list:
+      - recipe[apt::default]
+      - recipe[guru-sensu::rabbitmq]
+      - recipe[guru-sensu::sensu-client]
+    attributes:
+      remotes:
+        routers: 
+          ips: [ '192.168.12.99' ]
+  - name: sensu
+    driver:
+      network:
+        - ["private_network", {ip: "192.168.12.43"}]
+    run_list:
+      - recipe[apt::default]
+      - recipe[guru-sensu::sensu-server]
+      - recipe[guru-sensu::dashboard]
+      - recipe[guru-sensu::metrics-collector]
+      - recipe[guru-sensu::metrics-dashboard]
+      - recipe[guru-sensu::sensu-client]
+    attributes:
+      remotes:
+        routers: 
+          ips: [ '192.168.12.99' ]
