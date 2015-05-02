@@ -1,6 +1,6 @@
 name             'cluster-sensu'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Daniel Klopp'
+maintainer_email 'Submit an issue, I'll see it'
 license          'All rights reserved'
 description      'Installs/Configures cluster-sensu'
 long_description 'Installs/Configures cluster-sensu'

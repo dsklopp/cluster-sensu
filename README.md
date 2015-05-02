@@ -1,6 +1,6 @@
 # cluster-sensu-cookbook
 
-TODO: Enter the cookbook description here.
+This cookbook is meant only for testing guru-sensu.
 
 ## Supported Platforms
 
