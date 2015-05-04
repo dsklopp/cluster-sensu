@@ -29,6 +29,7 @@ suites:
       - recipe[apt::default]
       - recipe[guru-sensu::redis]
       - recipe[guru-sensu::sensu-client]
+      - recipe[guru-sensu::metrics-dashboard]
     attributes:
       remotes:
         routers: 
@@ -66,7 +67,6 @@ suites:
       - recipe[guru-sensu::sensu-server]
       - recipe[guru-sensu::dashboard]
       - recipe[guru-sensu::metrics-collector]
-      - recipe[guru-sensu::metrics-dashboard]
       - recipe[guru-sensu::sensu-client]
     attributes:
       remotes:
